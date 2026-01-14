@@ -3,7 +3,6 @@ import { MessageCircle } from 'lucide-react';
 
 const LiveChatButton = () => {
     const handleClick = () => {
-        // You can replace this with your actual chat link or logic
         window.open('https://m.me/nomayen', '_blank');
     };
 
