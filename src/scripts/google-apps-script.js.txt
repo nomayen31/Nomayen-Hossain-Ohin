@@ -1,0 +1,43 @@
+// 1. Enter your Telegram Bot Details Here:
+var BOT_TOKEN = "8430430149:AAFliz-KkHFRxm731JFwaHjcc4TVEDTMj2w"; 
+var CHAT_ID = "1886561666";
+
+function doPost(e) {
+  // Open the specific spreadsheet by ID
+  var sheet = SpreadsheetApp.openById("1oRznXKHIFlotziPlsracH6JEqYBgUpgl7Gj5IDp_HFI").getActiveSheet();
+  var params = e.parameter;
+  
+  // 1. Save to Google Sheet
+  sheet.appendRow([new Date(), params.name, params.email, params.message]);
+  
+  // 2. Prepare Telegram Message
+  var text = "🚀 *New Portfolio Contact*\n\n" +
+             "👤 *Name:* " + params.name + "\n" +
+             "📧 *Email:* " + params.email + "\n" +
+             "📝 *Message:* \n" + params.message;
+
+  // 3. Send to Telegram via API
+  var url = "https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage";
+  var payload = {
+    "chat_id": CHAT_ID,
+    "text": text,
+    "parse_mode": "Markdown"
+  };
+  
+  var options = {
+    "method": "post",
+    "contentType": "application/json",
+    "payload": JSON.stringify(payload)
+  };
+  
+  try {
+    UrlFetchApp.fetch(url, options);
+  } catch(error) {
+    // Log error but don't fail the response if Telegram is down
+    Logger.log(error);
+  }
+  
+  // 4. Return Success Response
+  return ContentService.createTextOutput(JSON.stringify({"result":"success"}))
+    .setMimeType(ContentService.MimeType.JSON);
+}

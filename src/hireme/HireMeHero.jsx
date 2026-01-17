@@ -3,10 +3,12 @@ import { ArrowRight, Download, Mail, MapPin, Briefcase, Code, Sparkles, CheckCir
 import profileImg from '../../src/assets/ohin3.jpeg';
 import cvFile from '../../src/assets/Nomayen_Hossain.pdf';
 import { Link } from 'react-router';
+import ContactModal from '../components/ContactModal';
 
 const HireMeHero = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isVisible, setIsVisible] = useState(false);
+    const [isContactOpen, setIsContactOpen] = useState(false);
 
     useEffect(() => {
         setIsVisible(true);
@@ -108,7 +110,10 @@ const HireMeHero = () => {
                                 <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                             </a>
 
-                            <button className="group px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 text-white rounded-2xl font-bold text-lg hover:bg-white/10 hover:border-white/30 hover:scale-105 transition-all duration-300 flex items-center gap-3">
+                            <button
+                                onClick={() => setIsContactOpen(true)}
+                                className="group px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 text-white rounded-2xl font-bold text-lg hover:bg-white/10 hover:border-white/30 hover:scale-105 transition-all duration-300 flex items-center gap-3"
+                            >
                                 <Mail className="w-5 h-5" />
                                 Contact
                             </button>
@@ -191,6 +196,8 @@ const HireMeHero = () => {
                     </div>
                 </div>
             </div>
+
+            <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
 
             <style dangerouslySetInnerHTML={{
                 __html: `

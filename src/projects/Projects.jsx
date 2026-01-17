@@ -1,141 +1,7 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github, Code2, Zap, ArrowUpRight, Sparkles } from 'lucide-react';
 
-const projectData = {
-    "categories": [
-        {
-            "name": "MERN Stack",
-            "projects": [
-                {
-                    "id": "autobid",
-                    "title": "AutoBid – Online Car Auction Platform",
-                    "description": "AutoBid is a full-stack web application that provides a secure and interactive online car auction experience. Users can list cars, place bids, and connect with sellers through protected routes.",
-                    "features": [
-                        "Car listing with title, category, deadline, and starting bid",
-                        "Full CRUD operations for posted auctions",
-                        "Protected routes for Add Car, Car Details, and My Posted Cars",
-                        "Secure bidding and seller-buyer interaction"
-                    ],
-                    "techStack": ["MongoDB", "Express.js", "React", "Node.js", "Firebase"],
-                    "links": {
-                        "client": "https://agrotrade-a35fe.web.app/",
-                        "backend": "https://autobid-server-eosin.vercel.app/",
-                        "repo": "https://github.com/nomayen31/AutoBid"
-                    }
-                },
-                {
-                    "id": "cluster-connect",
-                    "title": "Cluster-Connect – Freelancer Marketplace",
-                    "description": "Cluster-Connect is a web platform that allows users to discover freelancers, explore services, and directly hire or purchase services through an intuitive interface.",
-                    "features": [
-                        "Freelancer discovery and service listings",
-                        "Direct service purchase and booking",
-                        "Scalable server-side architecture",
-                        "Fast and intuitive user experience"
-                    ],
-                    "techStack": ["MongoDB", "Express.js", "React", "Node.js"],
-                    "links": {
-                        "client": "https://cluster-connect-b1c65.web.app/",
-                        "clientRepo": "https://github.com/nomayen31/Cluster-Connect",
-                        "serverRepo": "https://github.com/nomayen31/Cluster-Connect_Server"
-                    }
-                },
-                {
-                    "id": "firmfusion",
-                    "title": "FirmFusion – Job & Career Platform",
-                    "description": "FirmFusion is a modern job-finding platform that connects candidates with companies through job listings, company profiles, blogs, and case studies.",
-                    "features": [
-                        "User authentication system",
-                        "Job listings and company profiles",
-                        "Blog and case study modules",
-                        "Responsive and modern UI"
-                    ],
-                    "techStack": ["MongoDB", "Express.js", "React", "Node.js"],
-                    "links": {
-                        "live": "https://firmfusion-98a55.web.app/",
-                        "repo": "https://github.com/nomayen31/FirmFusion"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Full Stack",
-            "projects": [
-                {
-                    "id": "parcelx",
-                    "title": "ParcelX – Smart Parcel Delivery Platform",
-                    "description": "ParcelX is a door-to-door parcel delivery system featuring real-time tracking, automated workflows, and secure online payments.",
-                    "features": [
-                        "Real-time parcel tracking",
-                        "Automated delivery workflow",
-                        "Dynamic pricing and secure payments",
-                        "Rider assignment and performance tracking",
-                        "Customer feedback and review system"
-                    ],
-                    "techStack": ["React", "Node.js", "Express", "PostgreSQL", "JWT", "Stripe"],
-                    "links": {
-                        "client": "https://parcelx-client.vercel.app/",
-                        "server": "https://parcelx-auth-server.vercel.app/",
-                        "clientRepo": "https://github.com/nomayen31/Parcelx-client-",
-                        "serverRepo": "https://github.com/nomayen31/Parcelx-auth-server.git"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Frontend",
-            "projects": [
-                {
-                    "id": "khan-it",
-                    "title": "Khan IT – Digital Marketing Agency Landing Page",
-                    "description": "A high-performance, modern landing page for a leading digital marketing agency featuring blogs, service showcases, case studies, and interactive UI.",
-                    "features": [
-                        "Dynamic blog routing",
-                        "Modern UI with smooth transitions",
-                        "SEO, Ads, Web Design, and Branding sections",
-                        "Interactive process flow",
-                        "Fully responsive design"
-                    ],
-                    "techStack": ["React", "Tailwind CSS", "Vite"],
-                    "links": {
-                        "live": "https://deluxe-sundae-08e368.netlify.app/",
-                        "repo": "https://github.com/nomayen31/khan-it-landing-page-"
-                    }
-                },
-                {
-                    "id": "daily-sun",
-                    "title": "The Daily Sun – News Portal",
-                    "description": "A dynamic newspaper website with category-based articles and modern news layout.",
-                    "features": [
-                        "News categories and filtering",
-                        "Dynamic content loading",
-                        "Responsive design",
-                        "Clean and readable UI"
-                    ],
-                    "techStack": ["React", "Firebase", "Tailwind CSS"],
-                    "links": {
-                        "live": "https://dragon-news-53ef8.web.app/category/01",
-                        "repo": "https://github.com/nomayen31/the_sun_news"
-                    }
-                },
-                {
-                    "id": "portfolio",
-                    "title": "Personal Portfolio",
-                    "description": "A personal frontend portfolio showcasing projects, skills, and experience with a modern UI.",
-                    "features": [
-                        "Project showcase",
-                        "Responsive design",
-                        "Clean and minimal UI"
-                    ],
-                    "techStack": ["HTML", "CSS", "JavaScript"],
-                    "links": {
-                        "live": "https://nomayen31.github.io/Font-end-Project02/"
-                    }
-                }
-            ]
-        }
-    ]
-};
+import { projectData } from '../data/content';
 
 const Projects = () => {
     const [activeTab, setActiveTab] = useState(0);
@@ -182,8 +48,8 @@ const Projects = () => {
                                 key={cat.name}
                                 onClick={() => setActiveTab(idx)}
                                 className={`relative px-8 py-4 rounded-2xl text-sm font-bold transition-all duration-500 ${activeTab === idx
-                                        ? 'text-white'
-                                        : 'text-gray-500 hover:text-white'
+                                    ? 'text-white'
+                                    : 'text-gray-500 hover:text-white'
                                     }`}
                             >
                                 {activeTab === idx && (
@@ -201,9 +67,9 @@ const Projects = () => {
                 {/* Projects Grid with Stagger Animation */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projectData.categories[activeTab].projects.map((project, idx) => (
-                        <ProjectCard 
-                            key={project.id} 
-                            project={project} 
+                        <ProjectCard
+                            key={project.id}
+                            project={project}
                             index={idx}
                             isHovered={hoveredCard === project.id}
                             onHover={() => setHoveredCard(project.id)}
@@ -217,7 +83,7 @@ const Projects = () => {
 };
 
 const ProjectCard = ({ project, index, isHovered, onHover, onLeave }) => (
-    <div 
+    <div
         className="group relative"
         onMouseEnter={onHover}
         onMouseLeave={onLeave}
@@ -227,11 +93,11 @@ const ProjectCard = ({ project, index, isHovered, onHover, onLeave }) => (
     >
         {/* Animated Border */}
         <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
-        
+
         <div className="relative bg-gradient-to-br from-zinc-900 to-black rounded-[2rem] p-8 border border-white/10 flex flex-col h-full hover:border-white/30 transition-all duration-500 shadow-2xl overflow-hidden backdrop-blur-sm">
             {/* Floating Particles Effect */}
             <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-150"></div>
-            
+
             {/* Header */}
             <div className="flex justify-between items-start mb-6 relative z-10">
                 <div className="relative">
@@ -287,8 +153,8 @@ const ProjectCard = ({ project, index, isHovered, onHover, onLeave }) => (
             {/* Tech Stack Pills */}
             <div className="flex flex-wrap gap-2 mt-auto relative z-10">
                 {project.techStack.map((tech, i) => (
-                    <span 
-                        key={i} 
+                    <span
+                        key={i}
                         className="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5 bg-white/5 backdrop-blur-sm border border-white/10 text-gray-400 rounded-full hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white hover:border-transparent hover:scale-105 transition-all duration-300 cursor-default"
                         style={{ transitionDelay: `${i * 50}ms` }}
                     >

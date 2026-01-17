@@ -1,7 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
-import LiveChatButton from '../components/LiveChatButton';
+import ChatBot from '../components/ChatBot';
+import LinkedInNotification from '../components/LinkedInNotification';
 
 const MainLayout = () => {
     return (
@@ -10,7 +11,8 @@ const MainLayout = () => {
             <main className="flex-grow pt-24">
                 <Outlet />
             </main>
-            <LiveChatButton />
+            <ChatBot />
+            <LinkedInNotification />
         </div>
     );
 };
